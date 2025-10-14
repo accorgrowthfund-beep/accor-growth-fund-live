@@ -4,66 +4,31 @@
             "title": "General Information",
             "list": [
                 {
-                    "q": "Whether the fund can accept Commitments from Joint Investors?",
-                    "a": "<p>Yes, the fund can accept Commitments from Joint Ventures.</p>"
+                    "q": "Who can invest in this fund?",
+                    "a": "<p>The fund is open to Indian and foreign investors who qualify as HNI or Ultra HNI or meet the minimum investment criteria as prescribed by SEBI.</p>"
                 },
                 {
-                    "q": "Who are the eligible persons for the purpose of Joint Investors?",
-                    "a": "<p>The following can act as Joint Investors:</p> <p> An Investor and his/her spouse, who is also an eligible person</p> <p> An Investor and his/her parent, who is also an eligible person </p> <p> An Investor and his/her daughter/son, who is also an eligible person</p>"
-                }
-            ]
-        },
-        {
-            "title": "Investment Process",
-            "list": [
-                {
-                    "q": "Whether the fund can accept Commitments from Joint Investors?",
-                    "a": "<p>Yes, the fund can accept Commitments from Joint Ventures.</p>"
+                    "q": "What is the minimum investment amount?",
+                    "a": "<p>As per SEBI regulations, the minimum investment amount is ₹1 crore per investor. However, this may vary for employees or directors of the fund or manager, subject to applicable exemptions.</p>"
                 },
                 {
-                    "q": "Who are the eligible persons for the purpose of Joint Investors?",
-                    "a": "<p>The following can act as Joint Investors:</p> <p> An Investor and his/her spouse, who is also an eligible person</p> <p> An Investor and his/her parent, who is also an eligible person </p> <p> An Investor and his/her daughter/son, who is also an eligible person</p>"
-                }
-            ]
-        },
-        {
-            "title": "Fund Structure",
-            "list": [
-                {
-                    "q": "Whether the fund can accept Commitments from Joint Investors?",
-                    "a": "<p>Yes, the fund can accept Commitments from Joint Ventures.</p>"
+                    "q": "How do I subscribe to the fund?",
+                    "a": "<p>Investors can participate by completing the fund’s application process, executing the contribution agreement, and transferring funds to the designated bank account upon due diligence and onboarding.</p>"
                 },
                 {
-                    "q": "Who are the eligible persons for the purpose of Joint Investors?",
-                    "a": "<p>The following can act as Joint Investors:</p> <p> An Investor and his/her spouse, who is also an eligible person</p> <p> An Investor and his/her parent, who is also an eligible person </p> <p> An Investor and his/her daughter/son, who is also an eligible person</p>"
-                }
-            ]
-        },
-        {
-            "title": "Returns & Metrics",
-            "list": [
-                {
-                    "q": "Whether the fund can accept Commitments from Joint Investors?",
-                    "a": "<p>Yes, the fund can accept Commitments from Joint Ventures.</p>"
+                    "q": "How transparent is the fund’s reporting process?",
+                    "a": "<p>Investors receive detailed periodic reports covering portfolio composition, valuation, and performance metrics, ensuring complete transparency.</p>"
                 },
                 {
-                    "q": "Who are the eligible persons for the purpose of Joint Investors?",
-                    "a": "<p>The following can act as Joint Investors:</p> <p> An Investor and his/her spouse, who is also an eligible person</p> <p> An Investor and his/her parent, who is also an eligible person </p> <p> An Investor and his/her daughter/son, who is also an eligible person</p>"
-                }
-            ]
-        },
-        {
-            "title": "Regulatory & Compliance",
-            "list": [
-                {
-                    "q": "Whether the fund can accept Commitments from Joint Investors?",
-                    "a": "<p>Yes, the fund can accept Commitments from Joint Ventures.</p>"
+                    "q": "How is the fund’s Net Asset Value (NAV) calculated?",
+                    "a": "<p>NAV is calculated by the fund administrator at periodic intervals using standard valuation methodologies in compliance with SEBI guidelines and the fund’s internal policies.</p>"
                 },
                 {
-                    "q": "Who are the eligible persons for the purpose of Joint Investors?",
-                    "a": "<p>The following can act as Joint Investors:</p> <p> An Investor and his/her spouse, who is also an eligible person</p> <p> An Investor and his/her parent, who is also an eligible person </p> <p> An Investor and his/her daughter/son, who is also an eligible person</p>"
+                    "q": "What sectors or asset classes does the fund invest in?",
+                    "a": "<pThe fund invests across diversified sectors and instruments based on its investment strategy—ranging from equities, derivatives, fixed income, or alternative assets.</p>"
                 }
             ]
         }
+        
     ]
 }
