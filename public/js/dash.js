@@ -1817,7 +1817,7 @@ async function loadBlogList() {
                 </a>
               </h4>
               <a class="btn-one-rounded btn-onee-rounded wow fadeInLeft animated mt-30" 
-                 href="blog-detail.html?id=${blog.id || ""}">
+                 href="blog-detail.html?id=${blog.id || ""}&name=${blog.short_desc_list || ""}">
                  Read More <i class="fa-solid fa-arrow-right"></i>
               </a>
             </div>

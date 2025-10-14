@@ -196,7 +196,7 @@ var THEMEMASCOT = {};
 				const service = document.getElementById("service").value;
 				const message = document.getElementById("message").value.trim();
 
-			
+
 			});
 		}
 	}
@@ -219,7 +219,7 @@ var THEMEMASCOT = {};
 
 						// Create column
 						const column = document.createElement("div");
-						column.className = "faq-column col-lg-6 pb-30";
+						column.className = "faq-column col-lg-12 pb-30";
 
 						// Section title
 						const secTitle = `
@@ -1648,4 +1648,12 @@ function showToast(msg, bgColor = "#FF0000") {
 		position: "right",
 		backgroundColor: bgColor
 	}).showToast();
+}
+
+function generateSiteMap(){
+	fetch("https://accorgrowthfund.com/api/email-subscribe?action=sitemap")
+  .then(res => res.text())
+  .then(xml => {
+    console.log("Sitemap XML:", xml);
+  });
 }

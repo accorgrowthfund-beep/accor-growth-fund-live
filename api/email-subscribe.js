@@ -1,105 +1,15 @@
-// // api/subscribe.js
-// const nodemailer = require("nodemailer");
-
-// module.exports = async (req, res) => {
-//     const { email } = req.body;
-
-//     if (!email) {
-//         return res.status(400).json({ success: false, message: "Email is required" });
-//     }
-
-//     try {
-//         const transporter = nodemailer.createTransport({
-//             service: "gmail",
-//             auth: {
-//                 user: process.env.GMAIL_USER,
-//                 pass: process.env.GMAIL_PASS,
-//             },
-//         });
-
-//         const adminMailOptions = {
-//             from: process.env.GMAIL_USER,
-//             to: "yashtv001.tracewave@gmail.com", // admin email
-//             subject: "New Newsletter Subscription",
-//             text: `A new user subscribed with email: ${email}`,
-//         };
-
-//         const userMailOptions = {
-//             from: process.env.GMAIL_USER,
-//             to: email,
-//             subject: "Welcome to our Newsletter!",
-//             text: `Hi there,\n\nThank you for subscribing to our newsletter! You’ll now receive updates, news, and special offers from us.\n\nBest regards,\nCapithon Team`,
-//         };
-
-//         await Promise.all([
-//             transporter.sendMail(adminMailOptions),
-//             transporter.sendMail(userMailOptions),
-//         ]);
-
-//         res.status(200).json({ success: true, message: "Subscription successful! Emails sent." });
-//     } catch (error) {
-//         console.error("Error sending subscription emails:", error);
-//         res.status(500).json({ success: false, message: "Error processing subscription" });
-//     }
-// };
-
-
 // api/subscribe.js
-const nodemailer = require("nodemailer");
-
-module.exports = async (req, res) => {
-  const { name, email, message } = req.body;
-
-  if (!name || !email || !message) {
-    return res.status(400).json({ success: false, message: "Name, email and message are required" });
-  }
-
-  try {
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS,
-      },
-    });
-
-    // Admin email
-    const adminMailOptions = {
-      from: process.env.GMAIL_USER,
-      to: "yashtv001.tracewave@gmail.com", // admin email
-      subject: "New Contact Form Submission",
-      text: `New message from ${name} (${email}):\n\n${message}`,
-    };
-
-    // User confirmation email
-    const userMailOptions = {
-      from: process.env.GMAIL_USER,
-      to: email,
-      subject: "Thank you for contacting us!",
-      text: `Hi ${name},\n\nThank you for reaching out! We have received your message:\n"${message}"\n\nWe will get back to you soon.\n\nBest regards,\nCapithon Team`,
-    };
-
-    await Promise.all([
-      transporter.sendMail(adminMailOptions),
-      transporter.sendMail(userMailOptions),
-    ]);
-
-    res.status(200).json({ success: true, message: "Message sent successfully!" });
-  } catch (error) {
-    console.error("Error sending emails:", error);
-    res.status(500).json({ success: false, message: "Error sending emails" });
-  }
-};
-
-
-// // api/send-mail.js
 // const nodemailer = require("nodemailer");
 
 // module.exports = async (req, res) => {
-//   const { fname, lname, email, phone, category, message } = req.body;
+//   const { name, email, message } = req.body;
+
+//   if (!name || !email || !message) {
+//     return res.status(400).json({ success: false, message: "Name, email and message are required" });
+//   }
 
 //   try {
-//     let transporter = nodemailer.createTransport({
+//     const transporter = nodemailer.createTransport({
 //       service: "gmail",
 //       auth: {
 //         user: process.env.GMAIL_USER,
@@ -107,24 +17,146 @@ module.exports = async (req, res) => {
 //       },
 //     });
 
-//     let mailOptions = {
+//     // Admin email
+//     const adminMailOptions = {
 //       from: process.env.GMAIL_USER,
-//       to: "yashtv001.tracewave@gmail.com",
-//       subject: "New Free Consultation Request",
-//       text: `Name: ${fname} ${lname}
-// Email: ${email}
-// Phone: ${phone}
-// Category: ${category}
-// Message: ${message}`,
+//       to: "yashtv001.tracewave@gmail.com", // admin email
+//       subject: "New Contact Form Submission",
+//       text: `New message from ${name} (${email}):\n\n${message}`,
 //     };
 
-//     // Send the email using the transporter
-//     await transporter.sendMail(mailOptions);
+//     // User confirmation email
+//     const userMailOptions = {
+//       from: process.env.GMAIL_USER,
+//       to: email,
+//       subject: "Thank you for contacting us!",
+//       text: `Hi ${name},\n\nThank you for reaching out! We have received your message:\n"${message}"\n\nWe will get back to you soon.\n\nBest regards,\nCapithon Team`,
+//     };
 
-//     // Respond with a success message
-//     res.status(200).json({ success: true, message: "Mail sent successfully!" });
+//     await Promise.all([
+//       transporter.sendMail(adminMailOptions),
+//       transporter.sendMail(userMailOptions),
+//     ]);
+
+//     res.status(200).json({ success: true, message: "Message sent successfully!" });
 //   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ success: false, message: "Error sending mail" });
+//     console.error("Error sending emails:", error);
+//     res.status(500).json({ success: false, message: "Error sending emails" });
 //   }
 // };
+
+const nodemailer = require("nodemailer");
+
+module.exports = async (req, res) => {
+  const { action } = req.query;
+
+  if (action === "sitemap") {
+    // 👉 Generate sitemap.xml
+    try {
+      const response = await fetch("https://accorgrowthfund.com/api/blog-details/get");
+      if (!response.ok) {
+        return res.status(500).send("Failed to fetch blog data");
+      }
+
+      const result = await response.json();
+      const blogs = result?.data || [];
+
+      const BASE_URL = "https://accorgrowthfund.com";
+      const staticUrls = [
+        "",
+        "insights.html",
+        "about-us.html",
+        "InvestmentStrategies.html",
+        "faqs.html",
+        "contact-us.html",
+      ].map((path) => {
+        return `
+  <url>
+    <loc>${BASE_URL}/${path}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>`;
+      }).join("\n");
+      const blogUrls = blogs
+        .map((blog) => {
+          return `
+  <url>
+    <loc>${BASE_URL}/blog/${blog.id}</loc>
+    <lastmod>${blog.updated_date || blog.created_date}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`;
+        })
+        .join("\n");
+
+      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>${BASE_URL}</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  ${staticUrls}
+  ${blogUrls}
+</urlset>`;
+
+
+      res.setHeader("Content-Type", "text/xml");
+      res.write(sitemap);
+      res.end();
+    } catch (err) {
+      console.error("Error generating sitemap:", err);
+      res.status(500).send("Error generating sitemap");
+    }
+  } else {
+    // 👉 Default to email form logic
+    const { name, email, message } = req.body;
+
+    if (!name || !email || !message) {
+      return res.status(400).json({ success: false, message: "Name, email and message are required" });
+    }
+
+    try {
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: process.env.GMAIL_USER,
+          pass: process.env.GMAIL_PASS,
+        },
+      });
+
+      // Admin email
+      const adminMailOptions = {
+        from: process.env.GMAIL_USER,
+        to: "yashtv001.tracewave@gmail.com", // admin
+        subject: "New Contact Form Submission",
+        text: `New message from ${name} (${email}):\n\n${message}`,
+      };
+
+      const adminResult = await transporter.sendMail(adminMailOptions);
+
+      if (adminResult.accepted && adminResult.accepted.length > 0) {
+        // Confirmation to user
+        const userMailOptions = {
+          from: process.env.GMAIL_USER,
+          to: email,
+          subject: "Thank you for contacting us!",
+          text: `Hi ${name},\n\nThank you for reaching out! We have received your message:\n"${message}"\n\nWe will get back to you soon.\n\nBest regards,\nCapithon Team`,
+        };
+
+        const userResult = await transporter.sendMail(userMailOptions);
+
+        if (userResult.accepted && userResult.accepted.length > 0) {
+          return res.status(200).json({ success: true, message: "Message sent successfully!" });
+        } else {
+          return res.status(500).json({ success: false, message: "Failed to send confirmation email to user" });
+        }
+      } else {
+        return res.status(500).json({ success: false, message: "Failed to send email to admin" });
+      }
+    } catch (error) {
+      console.error("Error sending emails:", error);
+      return res.status(500).json({ success: false, message: "Error sending emails" });
+    }
+  }
+};
