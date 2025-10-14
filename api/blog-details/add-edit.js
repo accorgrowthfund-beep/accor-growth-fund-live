@@ -76,7 +76,7 @@ module.exports = async (req, res) => {
       const oldData = docSnapshot.data();
       const oldThumbnail = oldData.thumbnail;
       const oldDetailImage = oldData.detail_image;
-      console.log(oldDetailImage, oldThumbnail);
+      console.log(oldDetailImage,"oldDetailImage",  oldThumbnail, "oldThumbnail");
 
       const updated_date = new Date().toISOString();
 
