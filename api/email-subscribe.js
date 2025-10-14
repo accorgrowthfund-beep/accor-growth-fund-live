@@ -50,65 +50,70 @@ const nodemailer = require("nodemailer");
 module.exports = async (req, res) => {
   const { action } = req.query;
 
-  if (action === "sitemap") {
-    // 👉 Generate sitemap.xml
-    try {
-      const response = await fetch("https://accorgrowthfund.com/api/blog-details/get");
-      if (!response.ok) {
-        return res.status(500).send("Failed to fetch blog data");
-      }
+ if (action === "sitemap") {
+  try {
+    const response = await fetch("https://accorgrowthfund.com/api/blog-details/get");
+    if (!response.ok) {
+      const errText = await response.text();
+      console.error("Fetch failed:", errText);
+      return res.status(500).send("Failed to fetch blog data");
+    }
 
-      const result = await response.json();
-      const blogs = result?.data || [];
+    const result = await response.json();
+    console.log("Fetched result:", result);
 
-      const BASE_URL = "https://accorgrowthfund.com";
-      const staticUrls = [
-        "",
-        "insights.html",
-        "about-us.html",
-        "InvestmentStrategies.html",
-        "faqs.html",
-        "contact-us.html",
-      ].map((path) => {
-        return `
+    // ✅ SAFELY extract blogs
+    let blogs = [];
+
+    // result could be array itself OR object with `data`
+    if (Array.isArray(result)) {
+      blogs = result;
+    } else if (Array.isArray(result?.data)) {
+      blogs = result.data;
+    } else {
+      console.warn("Unexpected blog response structure");
+    }
+
+    const BASE_URL = "https://accorgrowthfund.com";
+
+    const staticPaths = [
+      "",
+      "insights.html",
+      "about-us.html",
+      "InvestmentStrategies.html",
+      "faqs.html",
+      "contact-us.html",
+    ];
+
+    const staticUrls = staticPaths.map((path) => `
   <url>
     <loc>${BASE_URL}/${path}</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>`;
-      }).join("\n");
-      const blogUrls = blogs
-        .map((blog) => {
-          return `
+  </url>`).join("\n");
+
+    const blogUrls = blogs.map((blog) => `
   <url>
     <loc>${BASE_URL}/blog/${blog.id}</loc>
-    <lastmod>${blog.updated_date || blog.created_date}</lastmod>
+    <lastmod>${blog.updated_date || blog.created_date || new Date().toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>`;
-        })
-        .join("\n");
+  </url>`).join("\n");
 
-      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>${BASE_URL}</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  ${staticUrls}
-  ${blogUrls}
+${staticUrls}
+${blogUrls}
 </urlset>`;
 
-
-      res.setHeader("Content-Type", "text/xml");
-      res.write(sitemap);
-      res.end();
-    } catch (err) {
-      console.error("Error generating sitemap:", err);
-      res.status(500).send("Error generating sitemap");
-    }
-  } else {
+    res.setHeader("Content-Type", "text/xml");
+    res.status(200).send(sitemap);
+  } catch (err) {
+    console.error("Error generating sitemap:", err.stack || err);
+    res.status(500).send("Error generating sitemap");
+  }
+}
+ else {
     // 👉 Default to email form logic
     const { name, email, message } = req.body;
 
