@@ -17731,6 +17731,10 @@ CONTACT Details
   max-width: 312px;
   display: block;
   margin: auto;
+      max-height: 312px;
+    min-height: 312px;
+    object-fit: contain;
+    border-radius: 12px;
 }
 
 .team-block-three .inner-box .image-box .socials {
