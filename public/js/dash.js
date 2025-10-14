@@ -1448,7 +1448,6 @@ function attachBlogEvents() {
               editDetailStatus
             );
           }
-          console.log(thumbnailUrl, detailUrl);
           if (!thumbnailUrl || !detailUrl) {
             return
           }
@@ -1914,9 +1913,6 @@ async function loadBlogDetail() {
     const detailImg = document.querySelector(".blog-details__img");
     if (detailImg) {
       const isValidImage = blog.detail_image && blog.detail_image.match(/\.(jpeg|jpg|gif|png|webp)$/i);
-      console.log(blog);
-      console.log(encodeURI(blog.detail_image));
-
 
       detailImg.innerHTML = `
         <img src="${isValidImage ? encodeURI(blog.detail_image) : 'https://picsum.photos/600/600'}" alt="${blog.title || 'Blog'}">
