@@ -1498,11 +1498,89 @@ function attachBlogEvents() {
       //   },
       //   { once: true }
       // );
-      form.addEventListener(
-        "submit",
-        async (e) => {
-          e.preventDefault();
+      // form.addEventListener(
+      //   "submit",
+      //   async (e) => {
+      //     e.preventDefault();
 
+      //     const description = editQuill ? editQuill.root.innerHTML : "";
+
+      //     // File inputs
+      //     const thumbFileInput = document.getElementById("editThumbnailFile");
+      //     const detailFileInput = document.getElementById("editDetailFile");
+
+      //     let thumbnailUrl = form.thumbnail.value.trim();
+      //     let detailUrl = form.detail_image.value.trim();
+
+      //     if (thumbFileInput && thumbFileInput.files.length > 0) {
+      //       thumbnailUrl = await uploadToFirebase(
+      //         thumbFileInput.files[0],
+      //         "blogs/thumbnails",
+      //         document.getElementById("editThumbStatus")
+      //       );
+      //     }
+
+      //     if (detailFileInput && detailFileInput.files.length > 0) {
+      //       detailUrl = await uploadToFirebase(
+      //         detailFileInput.files[0],
+      //         "blogs/details",
+      //         document.getElementById("editDetailStatus")
+      //       );
+      //     }
+
+      //     const updatedData = {
+      //       id: blog.id,
+      //       thumbnail: thumbnailUrl,
+      //       detail_image: detailUrl,
+      //       author: form.author.value.trim(),
+      //       short_desc_list: form.short_desc_list.value.trim(),
+      //       short_desc_detail: form.short_desc_detail.value.trim(),
+      //       description,
+      //     };
+
+      //     try {
+      //       const res = await fetch("/api/blog-details/add-edit", {
+      //         method: "PUT",
+      //         headers: {
+      //           "Content-Type": "application/json",
+      //           authorization: tkn || "",
+      //         },
+      //         body: JSON.stringify(updatedData),
+      //       });
+
+      //       const result = await res.json();
+
+      //       Toastify({
+      //         text: result.message || "Blog updated",
+      //         duration: 2000,
+      //         gravity: "top",
+      //         position: "right",
+      //         backgroundColor: res.ok ? "#4CAF50" : "#FF5252",
+      //       }).showToast();
+
+      //       if (res.ok) {
+      //         modal.hide();
+      //         await fetchBlogData();
+      //       }
+      //     } catch (err) {
+      //       console.error("Error updating blog:", err);
+      //       Toastify({
+      //         text: "Failed to update blog",
+      //         duration: 2000,
+      //         gravity: "top",
+      //         position: "right",
+      //         backgroundColor: "#FF5252",
+      //       }).showToast();
+      //     }
+      //   },
+      //   { once: true }
+      // );
+
+    });
+  });
+
+  async function editBlogFormButton(e){
+          e.preventDefault();
           const description = editQuill ? editQuill.root.innerHTML : "";
 
           // File inputs
@@ -1572,12 +1650,7 @@ function attachBlogEvents() {
               backgroundColor: "#FF5252",
             }).showToast();
           }
-        },
-        { once: true }
-      );
-
-    });
-  });
+  }
 
   // 🗑 Handle Delete Blog
   document.querySelectorAll(".delete-btn").forEach((btn) => {

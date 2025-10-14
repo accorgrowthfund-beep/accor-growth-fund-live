@@ -76,6 +76,7 @@ module.exports = async (req, res) => {
       const oldData = docSnapshot.data();
       const oldThumbnail = oldData.thumbnail;
       const oldDetailImage = oldData.detail_image;
+      console.log(oldDetailImage);
 
       const updated_date = new Date().toISOString();
 
@@ -92,7 +93,7 @@ module.exports = async (req, res) => {
 
       // Delete old images from Firebase Storage if changed
       const bucket = storage.bucket();
-      
+
       try {
         if (thumbnail !== oldThumbnail && oldThumbnail) {
           const path = oldThumbnail.split(`https://storage.googleapis.com/${bucket.name}/`)[1];
@@ -101,7 +102,7 @@ module.exports = async (req, res) => {
       } catch (err) {
         console.error("Failed to delete old thumbnail:", err);
       }
-
+      gs://accor-growth-fund-e14e3.firebasestorage.app
       try {
         if (detail_image !== oldDetailImage && oldDetailImage) {
           const path = detail_image.split(`https://storage.googleapis.com/${bucket.name}/`)[1];
@@ -131,46 +132,46 @@ module.exports = async (req, res) => {
     // }
 
     else if (req.method === apiMethods.delete) {
-  if (!id) {
-    return sendResponse(res, STATUS_CODES.BAD_REQUEST, "Blog ID is required for delete");
-  }
+      if (!id) {
+        return sendResponse(res, STATUS_CODES.BAD_REQUEST, "Blog ID is required for delete");
+      }
 
-  const docRef = db.collection(DB_COLLECTIONS.BLOGS).doc(id);
-  const docSnapshot = await docRef.get();
-  if (!docSnapshot.exists) {
-    return sendResponse(res, STATUS_CODES.NOT_FOUND, "Blog not found");
-  }
+      const docRef = db.collection(DB_COLLECTIONS.BLOGS).doc(id);
+      const docSnapshot = await docRef.get();
+      if (!docSnapshot.exists) {
+        return sendResponse(res, STATUS_CODES.NOT_FOUND, "Blog not found");
+      }
 
-  const blogData = docSnapshot.data();
-  const oldThumbnail = blogData.thumbnail;
-  const oldDetailImage = blogData.detail_image;
+      const blogData = docSnapshot.data();
+      const oldThumbnail = blogData.thumbnail;
+      const oldDetailImage = blogData.detail_image;
 
-  // Delete Firestore document
-  await docRef.delete();
+      // Delete Firestore document
+      await docRef.delete();
 
-  // Delete images from Firebase Storage
-  const bucket = storage.bucket();
+      // Delete images from Firebase Storage
+      const bucket = storage.bucket();
 
-  try {
-    if (oldThumbnail) {
-      const path = oldThumbnail.split(`https://storage.googleapis.com/${bucket.name}/`)[1];
-      if (path) await bucket.file(path).delete();
+      try {
+        if (oldThumbnail) {
+          const path = oldThumbnail.split(`https://storage.googleapis.com/${bucket.name}/`)[1];
+          if (path) await bucket.file(path).delete();
+        }
+      } catch (err) {
+        console.error("Failed to delete thumbnail on blog delete:", err);
+      }
+
+      try {
+        if (oldDetailImage) {
+          const path = oldDetailImage.split(`https://storage.googleapis.com/${bucket.name}/`)[1];
+          if (path) await bucket.file(path).delete();
+        }
+      } catch (err) {
+        console.error("Failed to delete detail image on blog delete:", err);
+      }
+
+      return sendResponse(res, STATUS_CODES.OK, "Blog deleted successfully", { id });
     }
-  } catch (err) {
-    console.error("Failed to delete thumbnail on blog delete:", err);
-  }
-
-  try {
-    if (oldDetailImage) {
-      const path = oldDetailImage.split(`https://storage.googleapis.com/${bucket.name}/`)[1];
-      if (path) await bucket.file(path).delete();
-    }
-  } catch (err) {
-    console.error("Failed to delete detail image on blog delete:", err);
-  }
-
-  return sendResponse(res, STATUS_CODES.OK, "Blog deleted successfully", { id });
-}
 
 
   } catch (err) {
