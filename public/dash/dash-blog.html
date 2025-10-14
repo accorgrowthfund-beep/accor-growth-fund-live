@@ -1,0 +1,256 @@
+<!-- <div>
+    <div class="container my-5">
+        <div class="d-flex gap-2 flex-wrap">
+            <button type="button" class="btn-one-rounded btn-one-rounded2 btn-one-roundedd mb-4" data-bs-toggle="modal"
+                data-bs-target="#addBlogModal">
+                Add Blog
+            </button>
+        </div>
+        <h3>Blog List</h3>
+        <table class="table table-bordered blog-table">
+            <thead class="table-dark">
+                <tr>
+                    <th>Thumbnail</th>
+                    <th>Title / Author</th>
+                    <th>Short Description</th>
+                    <th>Created Date</th>
+                    <th>Updated Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" id="addBlogModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bold">Add Blog</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addBlogForm" class="row g-4">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="thumbnail" placeholder="Thumbnail URL">
+                        </div>
+                          <div class="col-md-6">
+                            <input type="text" class="form-control" name="detail_image" placeholder="detail image URL">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="author" placeholder="Author">
+                        </div>
+                        <div class="col-12">
+                            <input type="text" class="form-control" name="short_desc_list" placeholder="Short Description List (comma separated)">
+                        </div>
+                        <div class="col-12">
+                            <textarea class="form-control" name="short_desc_detail" placeholder="Short Description Detail"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <textarea class="form-control" name="description" placeholder="Full Description" id="blogDescription"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" form="addBlogForm" class="btn-one-rounded btn-one-rounded2 btn-one-roundedd">Save Blog</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editBlogModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bold">Edit Blog</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editBlogForm" class="row g-4"></form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" form="editBlogForm" class="btn-one-rounded btn-one-rounded2 btn-one-roundedd">Update Blog</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div> -->
+
+
+
+
+
+
+<div>
+    <!-- Add Quill CSS in your main HTML file -->
+    <!-- <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"> -->
+
+    <style>
+        .editor-container {
+            height: 300px;
+            background: white;
+        }
+
+        .ql-container {
+            font-size: 14px;
+        }
+
+        .ql-editor {
+            min-height: 250px;
+        }
+    </style>
+
+    <div class="container my-5">
+        <div class="d-flex gap-2 flex-wrap">
+            <button type="button" class="btn-one-rounded btn-one-rounded2 btn-one-roundedd mb-4" data-bs-toggle="modal"
+                data-bs-target="#addBlogModal">
+                Add Blog
+            </button>
+        </div>
+        <h3>Blog List</h3>
+        <table class="table table-bordered blog-table">
+            <thead class="table-dark">
+                <tr>
+                    <th>Thumbnail</th>
+                    <th>Title / Author</th>
+                    <th>Short Description</th>
+                    <th>Created Date</th>
+                    <th>Updated Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- Add Blog Modal -->
+    <!-- Add Blog Modal -->
+    <div class="modal fade" id="addBlogModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bold">Add Blog</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- <form id="addBlogForm" class="row g-4">
+          <div class="col-md-6">
+            <label class="form-label fw-bold">Thumbnail URL</label>
+            <input type="text" class="form-control" name="thumbnail" placeholder="Enter thumbnail URL">
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label fw-bold">Detail Image URL</label>
+            <input type="text" class="form-control" name="detail_image" placeholder="Enter detail image URL">
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label fw-bold">Author</label>
+            <input type="text" class="form-control" name="author" placeholder="Enter author name">
+          </div>
+
+          <div class="col-12">
+            <label class="form-label fw-bold">Short Description List</label>
+            <input type="text" class="form-control" name="short_desc_list" placeholder="Comma separated short points">
+          </div>
+
+          <div class="col-12">
+            <label class="form-label fw-bold">Short Description Detail</label>
+            <textarea class="form-control" name="short_desc_detail" rows="3" placeholder="Enter short description"></textarea>
+          </div>
+
+          <div class="col-12">
+            <label class="form-label fw-bold">Full Description</label>
+            <div id="addBlogEditor" class="editor-container"></div>
+            <input type="hidden" name="description" id="addBlogDescription">
+          </div>
+        </form> -->
+                    <form id="addBlogForm" class="row g-4">
+                        <!-- Thumbnail Upload -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Thumbnail Image</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="thumbnail"
+                                    placeholder="Thumbnail URL will appear here" readonly>
+                                <input type="file" id="thumbnailFile" class="form-control" accept="image/*"
+                                    style="max-width:200px;">
+                            </div>
+                            <small id="thumbStatus" class="text-muted"></small>
+                        </div>
+
+                        <!-- Detail Image Upload -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Detail Image</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="detail_image"
+                                    placeholder="Detail image URL will appear here" readonly>
+                                <input type="file" id="detailFile" class="form-control" accept="image/*"
+                                    style="max-width:200px;">
+                            </div>
+                            <small id="detailStatus" class="text-muted"></small>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Author</label>
+                            <input type="text" class="form-control" name="author" placeholder="Enter author name">
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label fw-bold">Short Description List</label>
+                            <input type="text" class="form-control" name="short_desc_list"
+                                placeholder="Comma separated short points">
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label fw-bold">Short Description Detail</label>
+                            <textarea class="form-control" name="short_desc_detail" rows="3"
+                                placeholder="Enter short description"></textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label fw-bold">Full Description</label>
+                            <div id="addBlogEditor" class="editor-container"></div>
+                            <input type="hidden" name="description" id="addBlogDescription">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" form="addBlogForm" class="btn-one-rounded btn-one-rounded2 btn-one-roundedd">
+                        Save Blog
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Edit Blog Modal -->
+    <div class="modal fade" id="editBlogModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bold">Edit Blog</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editBlogForm" class="row g-4"></form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" form="editBlogForm"
+                        class="btn-one-rounded btn-one-rounded2 btn-one-roundedd">Update Blog</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Quill JS in your main HTML file -->
+    <!-- <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script> -->
+</div>

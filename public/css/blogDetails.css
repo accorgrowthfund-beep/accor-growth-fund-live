@@ -1,0 +1,19 @@
+.blog_detail_prev_next_img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.nav-links .next a, .nav-links .prev a{
+    gap: 15px;
+}
+
+.nav-links .next p, .nav-links .prev p{
+    font-size: 18px;
+}
+
+.nav-links .next:hover p, .nav-links .prev:hover p{
+    color: #fff;
+
+}

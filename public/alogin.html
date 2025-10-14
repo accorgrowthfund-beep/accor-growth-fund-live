@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+  <meta charset="utf-8">
+  <title>Accor Growth Fund</title>
+  <!-- Stylesheets -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/flatpickr.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/slick-theme.css">
+  <link rel="stylesheet" type="text/css" href="css/slick.css">
+  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <!-- Responsive -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-storage-compat.js"></script>
+
+
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <!-- Preloader -->
+    <div class="preloader"></div>
+
+    <!-- Contact area start here -->
+    <section class="contact-section pt-120 pb-120">
+      <div class="contact-image">
+        <img class="wow bounceInRight" data-wow-delay="200ms" data-wow-duration="1500ms"
+          src="images/contact/contact-image.png" alt="Image">
+      </div>
+      <div class="container">
+        <div class="outer-box">
+          <div class="row g-5">
+            <div class="col-lg-12">
+              <div class="contact-block">
+
+                <div class="head">
+                  <h3 class="title">Login</h3>
+                </div>
+
+                <form id="login-admin" class="">
+                  <div class="row g-4 pt-3">
+                    <div class="col-12">
+                      <div class="input">
+                        <svg class="icon" width="16" height="12" viewBox="0 0 16 12" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M14.5 0C15.3125 0 16 0.6875 16 1.5V10.5C16 11.3438 15.3125 12 14.5 12H1.5C0.65625 12 0 11.3438 0 10.5V1.5C0 0.6875 0.65625 0 1.5 0H14.5ZM14.5 1.5H1.5V2.78125C2.1875 3.375 3.3125 4.25 5.6875 6.125C6.21875 6.53125 7.25 7.53125 8 7.5C8.71875 7.53125 9.75 6.53125 10.2812 6.125C12.6562 4.25 13.7812 3.375 14.5 2.78125V1.5ZM1.5 10.5H14.5V4.71875C13.7812 5.28125 12.75 6.09375 11.2188 7.3125C10.5 7.84375 9.3125 9.03125 8 9C6.65625 9.03125 5.4375 7.84375 4.75 7.3125C3.21875 6.09375 2.1875 5.28125 1.5 4.71875V10.5Z"
+                            fill="#696969" />
+                        </svg>
+                        <input type="email" placeholder="Enter Email" id="username" required>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="input">
+                        <svg class="icon" width="14" height="16" viewBox="0 0 14 16" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M9.78125 9.5C12.0938 9.5 14 11.4062 14 13.7188V14.5C14 15.3438 13.3125 16 12.5 16H1.5C0.65625 16 0 15.3438 0 14.5V13.7188C0 11.4062 1.875 9.5 4.1875 9.5C5.09375 9.5 5.5 10 7 10C8.46875 10 8.875 9.5 9.78125 9.5ZM12.5 14.5V13.7188C12.5 12.2188 11.2812 11 9.78125 11C9.3125 11 8.59375 11.5 7 11.5C5.375 11.5 4.65625 11 4.1875 11C2.6875 11 1.5 12.2188 1.5 13.7188V14.5H12.5ZM7 9C4.5 9 2.5 7 2.5 4.5C2.5 2.03125 4.5 0 7 0C9.46875 0 11.5 2.03125 11.5 4.5C11.5 7 9.46875 9 7 9ZM7 1.5C5.34375 1.5 4 2.875 4 4.5C4 6.15625 5.34375 7.5 7 7.5C8.625 7.5 10 6.15625 10 4.5C10 2.875 8.625 1.5 7 1.5Z"
+                            fill="#696969" />
+                        </svg>
+                        <input type="password" placeholder="Enter Password" id="password" required>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="btn-one-rounded mt-30" type="submit">Submit <i
+                      class="fa-regular fa-angle-right"></i></button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact area end here -->
+
+  </div><!-- End Page Wrapper -->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/slick.min.js"></script>
+  <script src="js/slick-animation.min.js"></script>
+  <script src="js/jquery.fancybox.js"></script>
+  <script src="js/wow.js"></script>
+  <script src="js/appear.js"></script>
+  <script src="js/mixitup.js"></script>
+  <script src="js/flatpickr.js"></script>
+  <script src="js/swiper.min.js"></script>
+  <script src="js/gsap.min.js"></script>
+  <script src="js/ScrollTrigger.min.js"></script>
+  <script src="js/SplitText.min.js"></script>
+  <script src="js/nice-select.min.js"></script>
+  <script src="js/knob.js"></script>
+  <script src="js/parallax.js"></script>
+  <script src="js/vanilla-tilt.js"></script>
+  <script src="js/splitting.js"></script>
+  <script src="js/splitType.js"></script>
+  <script src="js/script-gsap.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/ad.js"></script>
+
+</body>
+
+
+</html>

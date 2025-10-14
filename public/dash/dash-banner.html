@@ -1,0 +1,321 @@
+<div class="container my-5">
+    <div class="d-flex justify-content-end gap-3">
+        <!-- <button class="btn-one-rounded btn-one-rounded2 btn-one-roundedd mb-3" id="addBannerData" data-bs-toggle="modal" 
+        data-bs-target="#addFundDataModal">Add Data</button> -->
+        <button class="btn-one-rounded btn-one-rounded2 btn-one-roundedd mb-3" id="editBannerData" data-bs-toggle="modal" 
+        data-bs-target="#editFundDataModal">Edit Data</button>
+    </div>
+
+    <div class="row g-4 dash_banner">
+        <!-- Invested Amount -->
+        <div class="col-12">
+            <div class="card h-100 shadow border-0">
+                <div class="card-body text-center d-flex flex-column justify-content-between">
+                    <h5 class="card-title fw-bold"><span class="placeholder placeholder-glow col-7"></span></h5>
+                    <p class="fs-5 mb-1"><span class="placeholder placeholder-glow col-7"></span></p>
+                    <p class="text-success fw-semibold mb-1"><span class="placeholder placeholder-glow col-7"></span></p>
+                    <p class="text-muted small"><span class="placeholder placeholder-glow col-7"></span></p>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- XIRR -->
+        <div class="col-12">
+            <div class="card h-100 shadow border-0">
+                <div class="card-body text-center d-flex flex-column justify-content-between">
+                    <h5 class="card-title fw-bold"><span class="placeholder col-7"></span></h5>
+                    <p class="fs-5 mb-1"><span class="placeholder col-7"></span></p>
+                    <p class="text-muted small"><span class="placeholder col-7"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Committed Amount -->
+        <div class="col-12">
+            <div class="card h-100 shadow border-0">
+                <div class="card-body text-center d-flex flex-column justify-content-between">
+                    <h5 class="card-title fw-bold"><span class="placeholder placeholder-glow col-7"></span></h5>
+                    <p class="fs-5 mb-1"><span class="placeholder placeholder-glow col-7"></span></p>
+                    <p class="text-muted small"><span class="placeholder placeholder-glow col-7"></span></p>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- AUM -->
+        <div class="col-12">
+            <div class="card h-100 shadow border-0">
+                <div class="card-body text-center d-flex flex-column justify-content-between">
+                    <h5 class="card-title fw-bold"><span class="placeholder placeholder-glow col-7"></span></h5>
+                    <p class="fs-5 mb-1"><span class="placeholder placeholder-glow col-7"></span></p>
+                    <p class="text-muted small"><span class="placeholder placeholder-glow col-7"></span></p>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Fund Start Date -->
+        <div class="col-12">
+            <div class="card h-100 shadow border-0">
+                <div class="card-body text-center d-flex flex-column justify-content-between">
+                    <h5 class="card-title fw-bold"><span class="placeholder placeholder-glow col-7"></span></h5>
+                    <p class="fs-5 mb-1"><span class="placeholder placeholder-glow col-7"></span></p>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- SEBI Registration -->
+        <div class="col-12">
+            <div class="card h-100 shadow border-0">
+                <div class="card-body text-center d-flex flex-column justify-content-between">
+                    <h5 class="card-title fw-bold"><span class="placeholder placeholder-glow col-7"></span></h5>
+                    <p class="fs-6 mb-1"><span class="placeholder placeholder-glow col-7"></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Edit Data Modal -->
+<div class="modal fade modal_class" id="editFundDataModal" tabindex="-1" aria-labelledby="editFundDataModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title fw-bold" id="editFundDataModalLabel">Edit Fund Data</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="editFundDataForm" class="row g-4">
+
+          <!-- Hidden field to store document ID -->
+          <input type="hidden" name="fundId" id="editFundId">
+
+          <!-- Invested Amount -->
+          <div class="col-12">
+            <h5 class="fw-bold">Invested Amount</h5>
+            <div class="row g-2">
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="investedAmount_value" placeholder="">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="investedAmount_percentage" placeholder="">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="investedAmount_date" placeholder="">
+              </div>
+            </div>
+          </div>
+
+          <!-- XIRR -->
+          <div class="col-12">
+            <h5 class="fw-bold">XIRR</h5>
+            <div class="row g-2">
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="xirr_value" placeholder="">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="xirr_percentage" placeholder="">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="xirr_date" placeholder="">
+              </div>
+            </div>
+          </div>
+
+          <!-- Committed Amount -->
+          <div class="col-12">
+            <h5 class="fw-bold">Committed Amount</h5>
+            <div class="row g-2">
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="committed_value" placeholder="">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="committed_percentage" placeholder="" disabled>
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="committed_date" placeholder="">
+              </div>
+            </div>
+          </div>
+
+          <!-- AUM -->
+          <div class="col-12">
+            <h5 class="fw-bold">AUM</h5>
+            <div class="row g-2">
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="aum_value" placeholder="">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="aum_percentage" placeholder="" disabled>
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="aum_date" placeholder="">
+              </div>
+            </div>
+          </div>
+
+          <!-- Fund Start Date -->
+          <div class="col-12">
+            <h5 class="fw-bold">Fund Start Date</h5>
+            <div class="row g-2">
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="fundStart_value" placeholder="">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="fundStart_percentage" placeholder="" disabled>
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="fundStart_date" placeholder="" disabled>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEBI Registration -->
+          <div class="col-12">
+            <h5 class="fw-bold">SEBI Registration</h5>
+            <div class="row g-2">
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="sebi_value" placeholder="">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="sebi_percentage" placeholder="" disabled>
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="sebi_date" placeholder="" disabled>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="submit" form="editFundDataForm" class="btn-one-rounded btn-one-rounded2 btn-one-roundedd">Update Data</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Data Modal -->
+<!-- <div class="modal fade modal_class" id="addFundDataModal" tabindex="-1" aria-labelledby="addFundDataModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h4 class="modal-title fw-bold" id="addFundDataModalLabel">Add Fund Data</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="addFundDataForm" class="row g-4">
+
+          <div class="col-12">
+            <h5 class="fw-bold">Invested Amount</h5>
+            <div class="row g-2">
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="investedAmount_value" placeholder="₹277.26 Cr">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="investedAmount_percentage" placeholder="60%">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="investedAmount_date" placeholder="As of 31 August 2025">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <h5 class="fw-bold">XIRR</h5>
+            <div class="row g-2">
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="xirr_value" placeholder="59.82%">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="xirr_percentage" placeholder="59.82">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="xirr_date" placeholder="As of 31 August 2025">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <h5 class="fw-bold">Committed Amount</h5>
+            <div class="row g-2">
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="committed_value" placeholder="₹462.10 Cr">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="committed_percentage" placeholder="--" disabled>
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="committed_date" placeholder="As of 31 August 2025">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <h5 class="fw-bold">AUM</h5>
+            <div class="row g-2">
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="aum_value" placeholder="₹340.13 Cr">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="aum_percentage" placeholder="--" disabled>
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="aum_date" placeholder="As of 31 August 2025">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <h5 class="fw-bold">Fund Start Date</h5>
+            <div class="row g-2">
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="fundStart_value" placeholder="03 Dec 2024">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="fundStart_percentage" placeholder="--" disabled>
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="fundStart_date" placeholder="--" disabled>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <h5 class="fw-bold">SEBI Registration</h5>
+            <div class="row g-2">
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="sebi_value" placeholder="IN/AIF3/24-25/1610">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="sebi_percentage" placeholder="--" disabled>
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" name="sebi_date" placeholder="--" disabled>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="submit" form="addFundDataForm" class="btn-one-rounded btn-one-rounded2 btn-one-roundedd">Save Data</button>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+
+ 

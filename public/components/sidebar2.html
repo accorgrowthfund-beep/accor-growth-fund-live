@@ -1,0 +1,49 @@
+  <nav class="sidebar collapsed" id="sidebar">
+    <div>
+      <div class="sidebar-top">
+        <a href="#" class="logo_wrapper">
+          <img src="../images/logo.png" alt="Logo" class="logo-small">
+        </a>
+        <button class="expand-btn" id="toggle-btn" onclick="hideShowSideBar(this)"><i class="fa fa-close"></i></button>
+      </div>
+      <div class="sidebar-links"> 
+        <ul>
+          <li class="firstEle" onclick="navigationClick(this)">
+            <a href="#BannerDetails">
+              <i class="lucide-home"></i>
+              <span class="link">Banner Details</span>
+            </a>
+          </li>
+          <li onclick="navigationClick(this)">
+            <a href="#chartDetails">
+              <i class="lucide-settings"></i>
+              <span class="link">Chart Details</span>
+            </a>
+          </li>
+          <li onclick="navigationClick(this)">
+            <a href="#TableDetails">
+              <i class="lucide-settings"></i>
+              <span class="link">Table Details</span>
+            </a>
+          </li>
+          <!-- <li onclick="navigationClick(this)">
+            <a href="#EnquiryList">
+              <i class="lucide-social-media"></i>
+              <span class="link">Enquiry List</span>
+            </a>
+          </li> -->
+           <li onclick="navigationClick(this)">
+            <a href="#BlogList">
+              <i class="lucide-social-media"></i>
+              <span class="link">BLog List</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar_profile">
+       <a class="btn-one-rounded btn-one-rounded2 btn-one-roundedd" href="#logout" onclick="handleLogOut(event)">Logout</a>
+      <!-- <a href="#logout" class="logout">Logout</a> -->
+    </div>
+  </nav>

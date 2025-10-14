@@ -1,0 +1,139 @@
+<div>
+    <div class="container my-5">
+        <div class="d-flex gap-2 flex-wrap">
+            <button type="button" class="btn-one-rounded btn-one-rounded2 btn-one-roundedd mb-4" data-bs-toggle="modal"
+                data-bs-target="#editChartModal">
+                Edit Chart Details
+            </button>
+        </div>
+        <h3>Fund Information</h3>
+        <table class="table table-bordered dash-chart">
+            <tbody>
+             
+            </tbody>
+        </table>
+    </div>
+    <!-- <div class="modal fade" id="chartModal" tabindex="-1" aria-labelledby="chartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="chartModalLabel">Chart Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="chartForm" onsubmit="addChartData(event)">
+                        <div class="d-flex justify-content-between flex-wrap w-100 gap-2">
+
+                            <div class="mb-3">
+                                <label for="nav" class="form-label">NAV</label>
+                                <input type="text" class="form-control" id="nav" value="">
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="date" class="form-label">Date</label>
+                                <input type="text" class="form-control" id="date" value="">
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="growth" class="form-label">Growth Since Inception</label>
+                                <input type="text" class="form-control" id="growth" value="">
+                            </div>
+                        </div>
+
+ 
+                        <div class="mb-3">
+                            <label class="form-label">Series Data</label>
+                            <div class="series-container">
+                            </div>
+                            <button type="button" class="btn btn-sm btn-success mt-2" id="addSeriesBtn"
+                                onclick="addSeries()">Add
+                                Series</button>
+                        </div>
+
+      
+                        <div class="mb-3">
+                            <label for="categories" class="form-label">Categories (comma separated)</label>
+                            <input type="text" class="form-control" id="categories"
+                                value="">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="colors" class="form-label">Colors (comma separated)</label>
+                            <input type="text" class="form-control" id="colors" value="">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="lines" class="form-label">Notes / Lines (one per line)</label>
+                            <textarea class="form-control" id="lines" rows="3">Past returns may not represent future performance.
+Figures reflect monthly averages of NAV performance (NAV is after expenses &amp; taxes).
+Values are indexed to 100 beginning 03 Dec 2024.</textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="modal fade" id="editChartModal" tabindex="-1" aria-labelledby="editChartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editChartModalLabel">Edit Chart Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editChartForm" onsubmit="updateChartData(event)">
+                        <input type="hidden" id="editChartId">
+
+                        <div class="d-flex justify-content-between flex-wrap w-100 gap-2">
+                            <div class="mb-3">
+                                <label for="editNav" class="form-label">NAV</label>
+                                <input type="text" class="form-control" id="editNav">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editDate" class="form-label">Date</label>
+                                <input type="text" class="form-control" id="editDate">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editGrowth" class="form-label">Growth Since Inception</label>
+                                <input type="text" class="form-control" id="editGrowth">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Series Data</label>
+                            <div class="edit-series-container"></div>
+                            <button type="button" class="btn btn-sm btn-success mt-2" onclick="addEditSeries()">Add
+                                Series</button>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editCategories" class="form-label">Categories (comma separated)</label>
+                            <input type="text" class="form-control" id="editCategories">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editColors" class="form-label">Colors (comma separated)</label>
+                            <input type="text" class="form-control" id="editColors">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editLines" class="form-label">Notes / Lines (one per line)</label>
+                            <textarea class="form-control" id="editLines" rows="3"></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="btn-one-rounded btn-one-rounded2 btn-one-roundedd d-block ms-auto">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

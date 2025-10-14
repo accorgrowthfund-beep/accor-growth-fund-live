@@ -1,0 +1,130 @@
+<div>
+  <div class="container my-5">
+    <div class="d-flex gap-2 flex-wrap">
+      <button type="button" class="btn-one-rounded btn-one-rounded2 btn-one-roundedd mb-4" data-bs-toggle="modal"
+        data-bs-target="#addFundTableModal">
+        Add Table Details
+      </button>
+    </div>
+    <h3>Ipo Information</h3>
+    <table class="table table-bordered dash-table">
+      <thead class="table-dark">
+        <tr>
+          <th>IPO</th>
+          <th>Issue Type</th>
+          <th>Lead Managers</th>
+          <th>Listing Date</th>
+          <th>Amount Invested</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- Add Data Modal -->
+  <div class="modal fade modal_class" id="addFundTableModal" tabindex="-1" aria-labelledby="addFundTableModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title fw-bold" id="addFundTableModalLabel">Add Fund Data</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="addFundTableForm" class="row g-4">
+            <div class="col-12">
+              <h5 class="fw-bold">Company Data</h5>
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <label class="form-label fw-semibold">Company Name</label>
+                  <input type="text" class="form-control" name="company_name" placeholder="Enter company name">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label fw-semibold">Issue Type</label>
+                  <input type="text" class="form-control" name="issue_type" placeholder="Enter issue type">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label fw-semibold">Lead Manager</label>
+                  <input type="text" class="form-control" name="lead_manager" placeholder="Enter lead manager">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label fw-semibold">Listing Date</label>
+                  <!-- <input type="date" class="form-control" name="listing_date"> -->
+                  <input type="date" class="form-control" id="datePicker" name="listing_date"
+                    placeholder="Pick a date" />
+                  <input type="text" id="dateInput" placeholder="or paste date like 'Dec 03, 2024'" class="form-control mt-3" />
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label fw-semibold">Amount Invested</label>
+                  <input type="text" class="form-control" name="amount_invested" placeholder="Enter amount invested">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" form="addFundTableForm" class="btn-one-rounded btn-one-rounded2 btn-one-roundedd">Save
+            Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Data Modal -->
+  <div class="modal fade modal_class" id="editTableModal" tabindex="-1" aria-labelledby="editTableModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title fw-bold" id="editTableModalLabel">Edit Fund Data</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="editTableForm" class="row g-4">
+            <div class="col-12">
+              <h5 class="fw-bold">Company Data</h5>
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <label class="form-label fw-semibold">Company Name</label>
+                  <input type="text" class="form-control" name="company_name" placeholder="Enter company name">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label fw-semibold">Issue Type</label>
+                  <input type="text" class="form-control" name="issue_type" placeholder="Enter issue type">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label fw-semibold">Lead Manager</label>
+                  <input type="text" class="form-control" name="lead_manager" placeholder="Enter lead manager">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label fw-semibold">Listing Date</label>
+                  <!-- <input type="date" class="form-control" name="listing_date"> -->
+                             <input type="date" class="form-control" id="datePicker" name="listing_date"
+                    placeholder="Pick a date" />
+                  <input type="text" id="dateInput" placeholder="or paste date like 'Dec 03, 2024'" class="form-control mt-3" />
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label fw-semibold">Amount Invested</label>
+                  <input type="text" class="form-control" name="amount_invested" placeholder="Enter amount invested">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" form="editTableForm" class="btn-one-rounded btn-one-rounded2 btn-one-roundedd">Update
+            Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
