@@ -1298,17 +1298,6 @@ async function addBlog() {
   });
 }
 
-// async function uploadToFirebase(file, folder, statusElement) {
-//   if (!file) return "";
-//   const storage = firebase.storage();
-//   statusElement.textContent = "Uploading...";
-//   const storageRef = storage.ref(`${folder}/${Date.now()}_${file.name}`);
-//   const snapshot = await storageRef.put(file);
-//   const url = await snapshot.ref.getDownloadURL();
-//   statusElement.textContent = "✅ Uploaded successfully";
-//   return url;
-// }
-
 async function uploadToFirebase(file, folder, statusElement) {
   if (!file) return "";
   statusElement.textContent = "Uploading...";
@@ -1372,17 +1361,6 @@ function attachBlogEvents() {
 
       // 🔧 Dynamically fill edit form (now with labels)
       const form = document.getElementById("editBlogForm");
-      // <div class="col-md-6">
-      //   <label class="form-label fw-bold">Thumbnail URL</label>
-      //   <input type="text" class="form-control" name="thumbnail"
-      //     value="${blog.thumbnail || ""}" placeholder="Enter thumbnail URL" />
-      // </div>
-
-      // <div class="col-md-6">
-      //   <label class="form-label fw-bold">Detail Image URL</label>
-      //   <input type="text" class="form-control" name="detail_image"
-      //     value="${blog.detail_image || ""}" placeholder="Enter detail image URL" />
-      // </div>
       form.innerHTML = `
         <input type="hidden" name="id" value="${blog.id}" />
 
@@ -1442,145 +1420,12 @@ function attachBlogEvents() {
       setTimeout(() => {
         initEditFormEditor(blog.description || '');
       }, 150);
-
-      // 💾 Submit handler
-      // form.addEventListener(
-      //   "submit",
-      //   async (e) => {
-      //     e.preventDefault();
-
-      //     const description = editQuill ? editQuill.root.innerHTML : '';
-
-      //     const updatedData = {
-      //       id: blog.id,
-      //       detail_image: form.detail_image.value.trim(),
-      //       thumbnail: form.thumbnail.value.trim(),
-      //       author: form.author.value.trim(),
-      //       short_desc_list: form.short_desc_list.value.trim(),
-      //       short_desc_detail: form.short_desc_detail.value.trim(),
-      //       description: description,
-      //     };
-
-      //     try {
-      //       const res = await fetch("/api/blog-details/add-edit", {
-      //         method: "PUT",
-      //         headers: {
-      //           "Content-Type": "application/json",
-      //           authorization: tkn || "",
-      //         },
-      //         body: JSON.stringify(updatedData),
-      //       });
-
-      //       const result = await res.json();
-
-      //       Toastify({
-      //         text: result.message || "Blog updated",
-      //         duration: 2000,
-      //         gravity: "top",
-      //         position: "right",
-      //         backgroundColor: res.ok ? "#4CAF50" : "#FF5252",
-      //       }).showToast();
-
-      //       if (res.ok) {
-      //         modal.hide();
-      //         await fetchBlogData();
-      //       }
-      //     } catch (err) {
-      //       console.error("Error updating blog:", err);
-      //       Toastify({
-      //         text: "Failed to update blog",
-      //         duration: 2000,
-      //         gravity: "top",
-      //         position: "right",
-      //         backgroundColor: "#FF5252",
-      //       }).showToast();
-      //     }
-      //   },
-      //   { once: true }
-      // );
-      // form.addEventListener(
-      //   "submit",
-      //   async (e) => {
-      //     e.preventDefault();
-
-      //     const description = editQuill ? editQuill.root.innerHTML : "";
-
-      //     // File inputs
-      //     const thumbFileInput = document.getElementById("editThumbnailFile");
-      //     const detailFileInput = document.getElementById("editDetailFile");
-
-      //     let thumbnailUrl = form.thumbnail.value.trim();
-      //     let detailUrl = form.detail_image.value.trim();
-
-      //     if (thumbFileInput && thumbFileInput.files.length > 0) {
-      //       thumbnailUrl = await uploadToFirebase(
-      //         thumbFileInput.files[0],
-      //         "blogs/thumbnails",
-      //         document.getElementById("editThumbStatus")
-      //       );
-      //     }
-
-      //     if (detailFileInput && detailFileInput.files.length > 0) {
-      //       detailUrl = await uploadToFirebase(
-      //         detailFileInput.files[0],
-      //         "blogs/details",
-      //         document.getElementById("editDetailStatus")
-      //       );
-      //     }
-
-      //     const updatedData = {
-      //       id: blog.id,
-      //       thumbnail: thumbnailUrl,
-      //       detail_image: detailUrl,
-      //       author: form.author.value.trim(),
-      //       short_desc_list: form.short_desc_list.value.trim(),
-      //       short_desc_detail: form.short_desc_detail.value.trim(),
-      //       description,
-      //     };
-
-      //     try {
-      //       const res = await fetch("/api/blog-details/add-edit", {
-      //         method: "PUT",
-      //         headers: {
-      //           "Content-Type": "application/json",
-      //           authorization: tkn || "",
-      //         },
-      //         body: JSON.stringify(updatedData),
-      //       });
-
-      //       const result = await res.json();
-
-      //       Toastify({
-      //         text: result.message || "Blog updated",
-      //         duration: 2000,
-      //         gravity: "top",
-      //         position: "right",
-      //         backgroundColor: res.ok ? "#4CAF50" : "#FF5252",
-      //       }).showToast();
-
-      //       if (res.ok) {
-      //         modal.hide();
-      //         await fetchBlogData();
-      //       }
-      //     } catch (err) {
-      //       console.error("Error updating blog:", err);
-      //       Toastify({
-      //         text: "Failed to update blog",
-      //         duration: 2000,
-      //         gravity: "top",
-      //         position: "right",
-      //         backgroundColor: "#FF5252",
-      //       }).showToast();
-      //     }
-      //   },
-      //   { once: true }
-      // );
-
-    });
-  });
-
-  async function editBlogFormButton(e){
+    
+      form.addEventListener(
+        "submit",
+        async (e) => {
           e.preventDefault();
+
           const description = editQuill ? editQuill.root.innerHTML : "";
 
           // File inputs
@@ -1589,12 +1434,14 @@ function attachBlogEvents() {
 
           let thumbnailUrl = form.thumbnail.value.trim();
           let detailUrl = form.detail_image.value.trim();
-
+          const editDetailStatus = document.getElementById("editDetailStatus")
+          const editThumbStatus = document.getElementById("editThumbStatus")
+          
           if (thumbFileInput && thumbFileInput.files.length > 0) {
             thumbnailUrl = await uploadToFirebase(
               thumbFileInput.files[0],
               "blogs/thumbnails",
-              document.getElementById("editThumbStatus")
+              editThumbStatus
             );
           }
 
@@ -1602,10 +1449,14 @@ function attachBlogEvents() {
             detailUrl = await uploadToFirebase(
               detailFileInput.files[0],
               "blogs/details",
-              document.getElementById("editDetailStatus")
+              editDetailStatus
             );
           }
-
+          console.log(thumbnailUrl, detailUrl);
+          if(!thumbnailUrl || !detailUrl){
+            return
+          }
+          
           const updatedData = {
             id: blog.id,
             thumbnail: thumbnailUrl,
@@ -1650,7 +1501,12 @@ function attachBlogEvents() {
               backgroundColor: "#FF5252",
             }).showToast();
           }
-  }
+        },
+        { once: true }
+      );
+
+    });
+  });
 
   // 🗑 Handle Delete Blog
   document.querySelectorAll(".delete-btn").forEach((btn) => {
