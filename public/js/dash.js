@@ -1990,7 +1990,7 @@ async function loadBlogDetail() {
     if (detailImg) {
       const isValidImage = blog.detail_image && blog.detail_image.match(/\.(jpeg|jpg|gif|png|webp)$/i);
       detailImg.innerHTML = `
-        <img src="${isValidImage ? blog.detail_image : 'https://picsum.photos/600/600'}" alt="${blog.title || 'Blog'}">
+        <img src="${isValidImage ? encodeURI(blog.detail_image) : 'https://picsum.photos/600/600'}" alt="${blog.title || 'Blog'}">
         <div class="blog-details__date">
           <span class="day">${new Date(blog.created_date).getDate().toString().padStart(2, "0")}</span>
           <span class="month">${new Date(blog.created_date).toLocaleString("en-US", { month: "short" })}</span>
