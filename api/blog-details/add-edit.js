@@ -94,23 +94,23 @@ module.exports = async (req, res) => {
       // Delete old images from Firebase Storage if changed
       const bucket = storage.bucket();
 
-      try {
-        if (thumbnail !== oldThumbnail && oldThumbnail) {
-          const path = oldThumbnail.split(`https://storage.googleapis.com/${bucket.name}/`)[1];
-          if (path) await bucket.file(path).delete();
-        }
-      } catch (err) {
-        console.error("Failed to delete old thumbnail:", err);
-      }
-      gs://accor-growth-fund-e14e3.firebasestorage.app
-      try {
-        if (detail_image !== oldDetailImage && oldDetailImage) {
-          const path = detail_image.split(`https://storage.googleapis.com/${bucket.name}/`)[1];
-          if (path) await bucket.file(path).delete();
-        }
-      } catch (err) {
-        console.error("Failed to delete old detail image:", err);
-      }
+      // try {
+      //   if (thumbnail !== oldThumbnail && oldThumbnail) {
+      //     const path = oldThumbnail.split(`https://storage.googleapis.com/${bucket.name}/`)[1];
+      //     if (path) await bucket.file(path).delete();
+      //   }
+      // } catch (err) {
+      //   console.error("Failed to delete old thumbnail:", err);
+      // }
+      // gs://accor-growth-fund-e14e3.firebasestorage.app
+      // try {
+      //   if (detail_image !== oldDetailImage && oldDetailImage) {
+      //     const path = detail_image.split(`https://storage.googleapis.com/${bucket.name}/`)[1];
+      //     if (path) await bucket.file(path).delete();
+      //   }
+      // } catch (err) {
+      //   console.error("Failed to delete old detail image:", err);
+      // }
 
       const updatedSnapshot = await docRef.get();
       return sendResponse(res, STATUS_CODES.OK, "Blog updated successfully", { id: updatedSnapshot.id, ...updatedSnapshot.data() });

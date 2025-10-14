@@ -1420,7 +1420,7 @@ function attachBlogEvents() {
       setTimeout(() => {
         initEditFormEditor(blog.description || '');
       }, 150);
-    
+
       form.addEventListener(
         "submit",
         async (e) => {
@@ -1436,13 +1436,9 @@ function attachBlogEvents() {
           let detailUrl = form.detail_image.value.trim();
           const editDetailStatus = document.getElementById("editDetailStatus")
           const editThumbStatus = document.getElementById("editThumbStatus")
-          
+
           if (thumbFileInput && thumbFileInput.files.length > 0) {
-            thumbnailUrl = await uploadToFirebase(
-              thumbFileInput.files[0],
-              "blogs/thumbnails",
-              editThumbStatus
-            );
+            thumbnailUrl = await uploadToFirebase(thumbFileInput.files[0], "blogs/thumbnails", editThumbStatus);
           }
 
           if (detailFileInput && detailFileInput.files.length > 0) {
@@ -1453,10 +1449,10 @@ function attachBlogEvents() {
             );
           }
           console.log(thumbnailUrl, detailUrl);
-          if(!thumbnailUrl || !detailUrl){
+          if (!thumbnailUrl || !detailUrl) {
             return
           }
-          
+
           const updatedData = {
             id: blog.id,
             thumbnail: thumbnailUrl,
@@ -1920,8 +1916,8 @@ async function loadBlogDetail() {
       const isValidImage = blog.detail_image && blog.detail_image.match(/\.(jpeg|jpg|gif|png|webp)$/i);
       console.log(blog);
       console.log(encodeURI(blog.detail_image));
-      
-      
+
+
       detailImg.innerHTML = `
         <img src="${isValidImage ? encodeURI(blog.detail_image) : 'https://picsum.photos/600/600'}" alt="${blog.title || 'Blog'}">
         <div class="blog-details__date">
