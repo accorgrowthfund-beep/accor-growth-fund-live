@@ -76,7 +76,7 @@ module.exports = async (req, res) => {
       const oldData = docSnapshot.data();
       const oldThumbnail = oldData.thumbnail;
       const oldDetailImage = oldData.detail_image;
-      console.log(oldDetailImage);
+      console.log(oldDetailImage, oldThumbnail);
 
       const updated_date = new Date().toISOString();
 
@@ -93,7 +93,8 @@ module.exports = async (req, res) => {
 
       // Delete old images from Firebase Storage if changed
       const bucket = storage.bucket();
-
+      console.log(bucket);
+      
       // try {
       //   if (thumbnail !== oldThumbnail && oldThumbnail) {
       //     const path = oldThumbnail.split(`https://storage.googleapis.com/${bucket.name}/`)[1];
