@@ -2024,7 +2024,7 @@ function populateSidebarPosts(blogs, currentBlogId = null) {
   const latestBlogs = filteredBlogs.slice(0, 3);
 
   latestBlogs.forEach(blog => {
-    const imgSrc = 'images/resource/blog1-1.jpg';
+    const imgSrc = blog.thumbnail || 'images/resource/blog1-1.jpg';
     const title = Array.isArray(blog.short_desc_list) ? blog.short_desc_list[0] : blog.short_desc_list || 'Untitled';
     const li = document.createElement('li');
     li.innerHTML = `
