@@ -1791,11 +1791,11 @@ async function loadBlogList() {
       col.setAttribute("data-wow-duration", "1500ms");
 
       col.innerHTML = `
-        <div class="blog-block-two mb-30">
-          <div class="inner-box">
+        <div class="blog-block-two mb-30 h-100">
+          <div class="inner-box h-100">
             <div class="image-box">
               <figure class="image">
-                <img src="${encodeURI(blog?.thumbnail || '/images/blog/blog-two-image1.jpg')}"  alt="Image">
+                <img src="${encodeURI(blog?.thumbnail || '/images/blog/blog-two-image1.jpg')}"  alt="Image" class="max-blog_img_height">
                 <span class="tag">${date}</span>
               </figure>
             </div>
