@@ -68,6 +68,8 @@ module.exports = async (req, res) => {
     // result could be array itself OR object with `data`
     if (Array.isArray(result)) {
       blogs = result;
+      console.log(result?.data, "result?.data");
+      
     } else if (Array.isArray(result?.data)) {
       blogs = result.data;
     } else {
