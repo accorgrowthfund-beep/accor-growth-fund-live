@@ -55,17 +55,21 @@ module.exports = async (req, res) => {
     const response = await fetch("https://accorgrowthfund.com/api/blog-details/get");
     if (!response.ok) {
       const errText = await response.text();
+      console.error("Fetch failed:", errText);
       return res.status(500).send("Failed to fetch blog data");
     }
 
     const result = await response.json();
+    console.log("Fetched result:", result);
 
     // ✅ SAFELY extract blogs
     let blogs = [];
 
     // result could be array itself OR object with `data`
-    if (Array.isArray(result?.data?.data)) {
-      blogs = result?.data?.data;
+    if (Array.isArray(result)) {
+      blogs = result;
+    } else if (Array.isArray(result?.data?.data)) {
+      blogs = result.data?.data;
     } else {
       console.warn("Unexpected blog response structure");
     }
