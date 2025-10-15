@@ -46,6 +46,7 @@
 // };
 
 const nodemailer = require("nodemailer");
+const { escapeXml } = require("../utils/com_fun");
 
 module.exports = async (req, res) => {
   const { action } = req.query;
@@ -92,19 +93,19 @@ module.exports = async (req, res) => {
     <priority>0.7</priority>
   </url>`).join("\n");
 
-    const blogUrls = blogs.map((blog) => `
+const blogUrls = blogs.map((blog) => {
+  const title = escapeXml(blog.short_desc_list || "");
+  const id = escapeXml(blog.id?.toString() || "");
+  const date = escapeXml(blog.updated_date || blog.created_date || new Date().toISOString());
+
+  return `
   <url>
-    <loc>${BASE_URL}/blog-detail.html?name=${blog.short_desc_list}&id=${blog.id}</loc>
-    <lastmod>${blog.updated_date || blog.created_date || new Date().toISOString()}</lastmod>
+    <loc>${BASE_URL}/blog-detail.html?name=${title}&amp;id=${id}</loc>
+    <lastmod>${date}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>`).join("\n");
-
-    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${staticUrls}
-${blogUrls}
-</urlset>`;
+  </url>`;
+}).join("\n");
 
     res.setHeader("Content-Type", "text/xml");
     res.status(200).send(sitemap);

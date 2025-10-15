@@ -122,4 +122,14 @@ if (!amount_invested || typeof amount_invested !== "string" ) {
   return true;
 };
 
-
+export const escapeXml = (unsafe) => {
+  return unsafe.replace(/[<>&'"]/g, function (c) {
+    switch (c) {
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '&': return '&amp;';
+      case '\'': return '&apos;';
+      case '"': return '&quot;';
+    }
+  });
+}
