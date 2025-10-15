@@ -96,7 +96,7 @@ module.exports = async (req, res) => {
 
     const blogUrls = blogs.map((blog) => `
   <url>
-    <loc>${BASE_URL}/blog/${blog.id}</loc>
+    <loc>${BASE_URL}/blog-detail.html?name=${blog.short_desc_list}&id=${blog.id}</loc>
     <lastmod>${blog.updated_date || blog.created_date || new Date().toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
