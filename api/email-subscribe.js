@@ -46,7 +46,6 @@
 // };
 
 const nodemailer = require("nodemailer");
-const { escapeXml } = require("../utils/com_fun");
 
 module.exports = async (req, res) => {
   const { action } = req.query;
@@ -106,6 +105,12 @@ const blogUrls = blogs.map((blog) => {
     <priority>0.8</priority>
   </url>`;
 }).join("\n");
+
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${staticUrls}
+${blogUrls}
+</urlset>`;
 
     res.setHeader("Content-Type", "text/xml");
     res.status(200).send(sitemap);
