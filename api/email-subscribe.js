@@ -46,6 +46,7 @@
 // };
 
 const nodemailer = require("nodemailer");
+const { escapeXml } = require("../utils/com_fun");
 
 module.exports = async (req, res) => {
   const { action } = req.query;
