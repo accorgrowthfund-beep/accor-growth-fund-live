@@ -64,10 +64,8 @@ module.exports = async (req, res) => {
     let blogs = [];
 
     // result could be array itself OR object with `data`
-    if (Array.isArray(result)) {
-      blogs = result;
-    } else if (Array.isArray(result?.data)) {
-      blogs = result.data;
+    if (Array.isArray(result?.data?.data)) {
+      blogs = result?.data?.data;
     } else {
       console.warn("Unexpected blog response structure");
     }
